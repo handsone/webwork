@@ -230,6 +230,7 @@ function rotateArray(rotateCount = 1) {
 	})
     }
 }
+
 var hammertime = new Hammer.Manager(document, {
     recognizers: [
         [Hammer.Swipe, {direction: Hammer.DIRECTION_ALL}]
