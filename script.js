@@ -79,6 +79,7 @@ var flushUI = function () {
 };
 
 function drawCell(rowIndex, columnIndex) {
+
 	var graphics = new PIXI.Graphics();
 	var width = app.renderer.width ;
 	var height = app.renderer.height ;
@@ -185,6 +186,7 @@ var onToDownEventHandler = function () {
 		alert('Game over.');
 	}
 };
+
 var onToLeftEventHandler = function () {
 	rotateArray(2);
 	var isChanged = moveCellToRight();
@@ -211,6 +213,27 @@ var onToUpEventHandler = function () {
 	}
 };
 
+function rotateArray(rotateCount = 1) {
+	for (var i = 0; i < rotateCount; i++) {
+		grid = rotateArrayToRightOnce(grid);
+	}
+	
+	function rotateArrayToRightOnce(array){
+		return array.map(function(row, rowIndex) {
+			return row.map(function(item, columnIndex) {
+				return array[3 - columnIndex][rowIndex] ;
+			}
+		}
+	}
+           
+	function rotateArrayToRightOnce(array) {  // es6 map映射函数：遍历每个值和索引,然后对每个值和索引条用回调函数
+		return array.map((row, rowIndex) => { // 箭头函数
+			return row.map((item, columnIndex) => {
+				return array[3 - columnIndex][rowIndex];
+			})
+		})
+	}
+}
 document.addEventListener('keydown', function (event) {
 	if (event.key === 'ArrowRight') {
 		onToRightEventHandler();
@@ -229,25 +252,13 @@ document.addEventListener('keydown', function (event) {
 	}
 });
 
-function rotateArray(rotateCount = 1) {
-	for (var i = 0; i < rotateCount; i++) {
-		grid = rotateArrayToRightOnce(grid);
-	}
-
-	function rotateArrayToRightOnce(array) {
-		return array.map((row, rowIndex) => {
-			return row.map((item, columnIndex) => {
-				return array[3 - columnIndex][rowIndex];
-			})
-		})
-	}
-}
 
 var hammertime = new Hammer.Manager(document, {
 	recognizers: [
 		[Hammer.Swipe, {direction: Hammer.DIRECTION_ALL}]
 	]
 });
+
 hammertime.on('swiperight', function() {
 	onToRightEventHandler();
 });
