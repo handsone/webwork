@@ -92,8 +92,8 @@ function drawCell(rowIndex, columnIndex) {
 			fontSize: 48
 		});
 		number.anchor.set(0.5);
-		
-		number.y = width / 22 + height / 8 * 2 + rowIndex * width / 15;
+		number.x = width / 30 + width  / 8 * 3 + columnIndex * width / 15;	
+		number.y = width / 30 + height / 8 * 2 + rowIndex * width / 15;
 		app.stage.addChild(number);
 	}
 };
