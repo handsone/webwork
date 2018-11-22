@@ -85,15 +85,15 @@ function drawCell(rowIndex, columnIndex) {
 	var height = app.renderer.height ;
 	graphics.beginFill(getColorByNumber(grid[rowIndex][columnIndex]), 1);
 	graphics.lineStyle(7, 0xFF6600, 1);
-	graphics.drawRect(width / 8 * 3 + columnIndex * width / 11, height / 8 * 2  + rowIndex * width / 11, width / 11, width / 11 );
+	graphics.drawRect(width / 8 * 3 + columnIndex * width / 15, height / 8 * 2  + rowIndex * width / 15, width / 15, width / 15 );
 	app.stage.addChild(graphics);
 	if (grid[rowIndex][columnIndex] !== 0) {
 		var number = new PIXI.Text(grid[rowIndex][columnIndex], {
 			fontSize: 48
 		});
 		number.anchor.set(0.5);
-		number.x = width / 22  + width / 8 * 3  + columnIndex * width / 11 ;
-		number.y = width / 22 + height / 8 * 2 + rowIndex * width / 11;
+		
+		number.y = width / 22 + height / 8 * 2 + rowIndex * width / 15;
 		app.stage.addChild(number);
 	}
 };
