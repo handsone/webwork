@@ -10,7 +10,7 @@ var score  =  0 ;
 
 var style = new PIXI.TextStyle({
 	fontFamily: 'Arial',
-	fontSize: 50,
+	fontSize: 60,
 	fontStyle: 'italic',
 	fontWeight: 'bold',
 	fill: ['#ffffff', '#00ff99'], // gradient
@@ -28,7 +28,7 @@ var style = new PIXI.TextStyle({
 
 var richText = new PIXI.Text('2048', style);
 richText.x = app.renderer.width / 2  ;
-richText.y = app.renderer.height / 4;
+richText.y = app.renderer.height / 8;
 app.stage.addChild(richText);
 
 var scoreText = new  PIXI.Text('Score:' + score ,{
@@ -85,15 +85,15 @@ function drawCell(rowIndex, columnIndex) {
 	var height = app.renderer.height ;
 	graphics.beginFill(getColorByNumber(grid[rowIndex][columnIndex]), 1);
 	graphics.lineStyle(7, 0xFF6600, 1);
-	graphics.drawRect(width / 8 * 3 + columnIndex * width / 20, height / 8 * 3 + rowIndex * width / 20, width / 20, width / 20 );
+	graphics.drawRect(width / 8 * 3 + columnIndex * width / 11, height / 8 * 2  + rowIndex * width / 11, width / 11, width / 11 );
 	app.stage.addChild(graphics);
 	if (grid[rowIndex][columnIndex] !== 0) {
 		var number = new PIXI.Text(grid[rowIndex][columnIndex], {
 			fontSize: 48
 		});
 		number.anchor.set(0.5);
-		number.x = width / 40  + width / 8 * 3  + columnIndex * width / 20 ;
-		number.y = width / 40 + height / 8 * 3 + rowIndex * width / 20;
+		number.x = width / 22  + width / 8 * 3  + columnIndex * width / 11 ;
+		number.y = width / 22 + height / 8 * 2 + rowIndex * width / 11;
 		app.stage.addChild(number);
 	}
 };
@@ -218,13 +218,13 @@ function rotateArray(rotateCount = 1) {
 		grid = rotateArrayToRightOnce(grid);
 	}
 	
-	function rotateArrayToRightOnce(array){
-		return array.map(function(row, rowIndex) {
-			return row.map(function(item, columnIndex) {
-				return array[3 - columnIndex][rowIndex] ;
-			}
-		}
-	}
+	// function rotateArrayToRightOnce(array){
+		// return array.map(function(row, rowIndex) {
+			// return row.map(function(item, columnIndex) {
+				// return array[3 - columnIndex][rowIndex] ;
+			// }
+		// }
+	// }
            
 	function rotateArrayToRightOnce(array) {  // es6 map映射函数：遍历每个值和索引,然后对每个值和索引条用回调函数
 		return array.map((row, rowIndex) => { // 箭头函数
