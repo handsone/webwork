@@ -258,7 +258,6 @@ var hammertime = new Hammer.Manager(document, {
 		[Hammer.Swipe, {direction: Hammer.DIRECTION_ALL}]
 	]
 });
-
 hammertime.on('swiperight', function() {
 	onToRightEventHandler();
 });
