@@ -1,8 +1,6 @@
 
 var app = new PIXI.Application(window.innerWidth, window.innerHeight , {backgroundColor: 0xFF6600});
 document.body.appendChild(app.view);
-app.renderer.view.style.position = "absolute";
-app.renderer.view.style.display = "block";
 
 var maxCount = 16;
 var currentCount = 0;
